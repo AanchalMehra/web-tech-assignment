@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMI Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>EMI Calculator</h2>
+    <input type="number" id="principal" placeholder="Principal (Rs.)" required>
+    <input type="number" id="rate" placeholder="Annual Interest Rate (%)" required>
+    <input type="number" id="tenure" placeholder="Tenure (months)" required>
+
+    <div class="btnContainer">
+      <button class="submit" id="calculate">Calculate EMI</button>
+      <button class="clear" id="clear">Clear</button>
+    </div>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
