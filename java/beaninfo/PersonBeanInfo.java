@@ -1,16 +1,33 @@
+package beaninfo;
 import java.beans.*;
+import beans.Person;
 
 public class PersonBeanInfo extends SimpleBeanInfo {
-
     @Override
     public PropertyDescriptor[] getPropertyDescriptors() {
         try {
-            PropertyDescriptor nameProp = new PropertyDescriptor("name", Class.forName("beans.Person"));
-            PropertyDescriptor ageProp = new PropertyDescriptor("age", Class.forName("beans.Person"));
-            return new PropertyDescriptor[]{nameProp, ageProp};
-        } catch (IntrospectionException | ClassNotFoundException e) {
+            PropertyDescriptor nameDescriptor = new PropertyDescriptor("name", Person.class);
+            nameDescriptor.setDisplayName("Person's Name");
+
+            PropertyDescriptor ageDescriptor = new PropertyDescriptor("age", Person.class);
+            ageDescriptor.setDisplayName("Person's Age");
+
+            return new PropertyDescriptor[]{nameDescriptor, ageDescriptor};
+        } catch (IntrospectionException e) {
             e.printStackTrace();
-            return null;
         }
+        return null;
+    }
+
+    @Override
+    public MethodDescriptor[] getMethodDescriptors() {
+        try {
+            MethodDescriptor getNameDescriptor = new MethodDescriptor(Person.class.getMethod("getName"));
+            MethodDescriptor setNameDescriptor = new MethodDescriptor(Person.class.getMethod("setName", String.class));
+            return new MethodDescriptor[]{getNameDescriptor, setNameDescriptor};
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
