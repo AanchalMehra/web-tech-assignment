@@ -14,11 +14,16 @@ const savedN = localStorage.getItem("tenure");
 const savedResult = localStorage.getItem("emiResult");
 
 //if values in localStoarge already,load them
-if(savedP) document.getElementById("principal").value = savedP;
-if(savedR) document.getElementById("rate").value = savedR;
-if(savedN) document.getElementById("tenure").value = savedN;
-if(savedResult) document.getElementById("result").innerText = savedResult;
-
+if(savedP!== null) {
+    principal.value = savedP;}
+if(savedR!== null) {
+    rate.value = savedR;}
+if(savedN!== null) {
+    tenure.value = savedN;}
+if(savedResult!== null) {
+    resultBox.innerText = savedResult;
+    resultBox.classList.add("active");
+}
 //click event for emi calculation button
 calculateBtn.addEventListener("click", function(){
     //allow floating values
